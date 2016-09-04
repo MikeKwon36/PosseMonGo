@@ -5,14 +5,18 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kwondeveloper.possemongo.Data.Posse;
 import com.kwondeveloper.possemongo.Helpers.PosseSingleton;
 import com.kwondeveloper.possemongo.R;
+import com.squareup.picasso.Picasso;
 
 /**
  * A fragment representing a Programmer's details in a {@link ProgrammerListActivity} in
@@ -21,6 +25,7 @@ import com.kwondeveloper.possemongo.R;
 public class ProgrammerDetailFragment extends Fragment {
 
     public static final String POSSE_IDENTIFIER = "index";
+    private CollapsingToolbarLayout mAppBarLayout;
     private Posse mProgrammer;
 
     public ProgrammerDetailFragment() {}
@@ -33,9 +38,9 @@ public class ProgrammerDetailFragment extends Fragment {
             mProgrammer = PosseSingleton.getProgrammer(getArguments().getInt(POSSE_IDENTIFIER));
 
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-            if (appBarLayout != null) {
-                appBarLayout.setTitle(mProgrammer.getName());
+            CollapsingToolbarLayout mAppBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+            if (mAppBarLayout != null) {
+                mAppBarLayout.setTitle(mProgrammer.getName());
             }
         }
     }
@@ -55,29 +60,85 @@ public class ProgrammerDetailFragment extends Fragment {
             ((TextView) rootView.findViewById(R.id.tvRegion)).setText(mProgrammer.getRegion());
             ((TextView) rootView.findViewById(R.id.tvPostalCode)).setText(mProgrammer.getPostalCode());
             ((TextView) rootView.findViewById(R.id.tvCountry)).setText(mProgrammer.getCountry());
-        }
-        switch (mProgrammer.getFavoriteColor()){
-            case "red":
-                rootView.setBackgroundColor(getResources().getColor(R.color.red));
-                break;
-            case "green":
-                rootView.setBackgroundColor(getResources().getColor(R.color.green));
-                break;
-            case "black":
-                rootView.setBackgroundColor(getResources().getColor(R.color.black));
-                break;
-            case "aqua":
-                rootView.setBackgroundColor(getResources().getColor(R.color.aqua));
-                break;
-            case "purple":
-                rootView.setBackgroundColor(getResources().getColor(R.color.purple));
-                break;
-            case "brown":
-                rootView.setBackgroundColor(getResources().getColor(R.color.brown));
-                break;
-            case "blue":
-                rootView.setBackgroundColor(getResources().getColor(R.color.blue));
-                break;
+            switch (mProgrammer.getFavoriteColor()){
+                case "red":
+                    ((LinearLayout) rootView.findViewById(R.id.detailBackground))
+                            .setBackgroundColor(getResources().getColor(R.color.red));
+                    if (PosseSingleton.mTwoPane) {
+                        Picasso.with(getContext()).load(R.drawable.red)
+                                .fit().centerCrop()
+                                .into(((ImageView) rootView.findViewById(R.id.ivPosseMon)));
+                    } else {
+                        ((CardView) rootView.findViewById(R.id.ivPosseMonContainer)).setVisibility(View.GONE);
+                    }
+                    break;
+                case "green":
+                    ((LinearLayout) rootView.findViewById(R.id.detailBackground))
+                            .setBackgroundColor(getResources().getColor(R.color.green));
+                    if (PosseSingleton.mTwoPane) {
+                        Picasso.with(getContext()).load(R.drawable.green)
+                                .fit().centerCrop()
+                                .into(((ImageView) rootView.findViewById(R.id.ivPosseMon)));
+                    } else {
+                        ((CardView) rootView.findViewById(R.id.ivPosseMonContainer)).setVisibility(View.GONE);
+                    }
+                    break;
+                case "black":
+                    ((LinearLayout) rootView.findViewById(R.id.detailBackground))
+                            .setBackgroundColor(getResources().getColor(R.color.black));
+                    if (PosseSingleton.mTwoPane) {
+                        Picasso.with(getContext()).load(R.drawable.black)
+                                .fit().centerCrop()
+                                .into(((ImageView) rootView.findViewById(R.id.ivPosseMon)));
+                    } else {
+                        ((CardView) rootView.findViewById(R.id.ivPosseMonContainer)).setVisibility(View.GONE);
+                    }
+                    break;
+                case "aqua":
+                    ((LinearLayout) rootView.findViewById(R.id.detailBackground))
+                            .setBackgroundColor(getResources().getColor(R.color.aqua));
+                    if (PosseSingleton.mTwoPane) {
+                        Picasso.with(getContext()).load(R.drawable.aqua)
+                                .fit().centerCrop()
+                                .into(((ImageView) rootView.findViewById(R.id.ivPosseMon)));
+                    } else {
+                        ((CardView) rootView.findViewById(R.id.ivPosseMonContainer)).setVisibility(View.GONE);
+                    }
+                    break;
+                case "purple":
+                    ((LinearLayout) rootView.findViewById(R.id.detailBackground))
+                            .setBackgroundColor(getResources().getColor(R.color.purple));
+                    if (PosseSingleton.mTwoPane) {
+                        Picasso.with(getContext()).load(R.drawable.purple)
+                                .fit().centerCrop()
+                                .into(((ImageView) rootView.findViewById(R.id.ivPosseMon)));
+                    } else {
+                        ((CardView) rootView.findViewById(R.id.ivPosseMonContainer)).setVisibility(View.GONE);
+                    }
+                    break;
+                case "brown":
+                    ((LinearLayout) rootView.findViewById(R.id.detailBackground))
+                            .setBackgroundColor(getResources().getColor(R.color.brown));
+                    if (PosseSingleton.mTwoPane) {
+                        Picasso.with(getContext()).load(R.drawable.brown)
+                                .fit().centerCrop()
+                                .into(((ImageView) rootView.findViewById(R.id.ivPosseMon)));
+                    } else {
+                        ((CardView) rootView.findViewById(R.id.ivPosseMonContainer)).setVisibility(View.GONE);
+                    }
+                    break;
+                case "blue":
+                    ((LinearLayout) rootView.findViewById(R.id.detailBackground))
+                            .setBackgroundColor(getResources().getColor(R.color.blue));
+                    if (PosseSingleton.mTwoPane) {
+                        Picasso.with(getContext()).load(R.drawable.blue)
+                                .fit().centerCrop()
+                                .into(((ImageView) rootView.findViewById(R.id.ivPosseMon)));
+                    } else {
+                        ((CardView) rootView.findViewById(R.id.ivPosseMonContainer)).setVisibility(View.GONE);
+                    }
+                    break;
+            }
         }
         return rootView;
     }

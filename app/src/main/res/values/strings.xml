@@ -5,6 +5,8 @@
     <string name="roster_swipe_delete">removed from roster!</string>
     <string name="launch_instructions">Click to Select\nHold to Move\nSwipe to Remove</string>
 
+    <string name="selection">... I choose you!</string>
+
     <string name="ios">iOS</string>
     <string name="android">Android</string>
     <string name="ruby">Ruby</string>

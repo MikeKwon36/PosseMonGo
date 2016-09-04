@@ -109,13 +109,17 @@ public class PosseRecyclerAdapter extends RecyclerView.Adapter<PosseRecyclerAdap
                 arguments.putInt(ProgrammerDetailFragment.POSSE_IDENTIFIER, getAdapterPosition());
                 ProgrammerDetailFragment fragment = new ProgrammerDetailFragment();
                 fragment.setArguments(arguments);
-                mContext.getSupportFragmentManager().beginTransaction().replace(R.id.programmer_detail_container, fragment).commit();
+                mContext.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.programmer_detail_container, fragment).commit();
             } else {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, ProgrammerDetailActivity.class);
                 intent.putExtra(ProgrammerDetailFragment.POSSE_IDENTIFIER, getAdapterPosition());
                 context.startActivity(intent);
             }
+            Toast.makeText(mContext,
+                    PosseSingleton.getProgrammer(getAdapterPosition()).getName() + mContext.getString(R.string.selection),
+                    Toast.LENGTH_SHORT).show();
         }
 
         @Override
