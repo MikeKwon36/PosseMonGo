@@ -6,7 +6,7 @@
 ---
 
 ### Overview
-In honor of the rise & fall of PokemonGo, and the fact that using Posse's branding on the app reminded me of a Pokedex app my buddy created...
+In honor of the rise & fall of PokemonGo, and the fact that using Posse's brand colors on the app reminded me of a Pokedex app my buddy built...
 
 <img src="screenshots/phonelist.png" width="200" height="350">
 <img src="screenshots/phonedetail.png" width="200" height="350">

@@ -43,7 +43,8 @@ public class PosseRecyclerAdapter extends RecyclerView.Adapter<PosseRecyclerAdap
 
     @Override
     public void onBindViewHolder(PosseRecyclerAdapter.ViewHolder holder, int position) {
-
+        //build the details of each list item with programmer name, city, and graphic indicating
+        //their programming language expertise
         holder.mName.setText(mList.get(position).getName());
         holder.mLocation.setText(mList.get(position).getLocality());
         if (mList.get(position).getPlatform() != null) {
@@ -69,24 +70,24 @@ public class PosseRecyclerAdapter extends RecyclerView.Adapter<PosseRecyclerAdap
         return mList.size();
     }
 
+    //Remove programmer list item from list via swipe and notify the RecyclerViewAdapter
     @Override
     public void onItemDismiss(int position) {
-        //Remove programmer from list via swipe and notify the RecyclerViewAdapter
         Toast.makeText(mContext, PosseSingleton.getProgrammer(position).getName()
                         + " " + mContext.getString(R.string.roster_swipe_delete), Toast.LENGTH_SHORT).show();
         PosseSingleton.removeProgrammer(position);
         notifyItemRemoved(position);
     }
 
+    //drag & drop programmer list item into new position on the list and notify the RecyclerViewAdapter
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
-        //drag & drop programmer into new position on the list and notify the RecyclerViewAdapter
         Posse prev = PosseSingleton.removeProgrammer(fromPosition);
         PosseSingleton.addProgrammer(prev, toPosition);
         notifyItemMoved(fromPosition, toPosition);
     }
 
-    //Custom ViewHolder inner class
+    //Custom ViewHolder inner class for recyclerview
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ItemTouchHelperViewHolder {
 
         private TextView mName,mLocation;
@@ -122,12 +123,14 @@ public class PosseRecyclerAdapter extends RecyclerView.Adapter<PosseRecyclerAdap
                     Toast.LENGTH_SHORT).show();
         }
 
+        //Reduce list item size when touched to indicated its been selected for movement
         @Override
         public void onItemSelected() {
             itemView.setScaleX(.98f);
             itemView.setScaleY(.98f);
         }
 
+        //Restore list item size when released
         @Override
         public void onItemClear() {
             itemView.setScaleX(1f);

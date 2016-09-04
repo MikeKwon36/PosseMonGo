@@ -25,6 +25,7 @@ public class ProgrammerDetailActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        //Identify which programmer was clicked and load their information in the fragment
         if (savedInstanceState == null) {
             Bundle arguments = new Bundle();
             arguments.putInt(ProgrammerDetailFragment.POSSE_IDENTIFIER,
@@ -35,6 +36,7 @@ public class ProgrammerDetailActivity extends AppCompatActivity {
                     .add(R.id.programmer_detail_container, fragment).commit();
         }
 
+        //Load the appropriate pokemon image based on the programmer selected
         switch (PosseSingleton.getProgrammer(getIntent().getIntExtra(ProgrammerDetailFragment.POSSE_IDENTIFIER,0)).getFavoriteColor()){
             case "red":
                 if (!PosseSingleton.mTwoPane) {
@@ -88,7 +90,7 @@ public class ProgrammerDetailActivity extends AppCompatActivity {
         }
     }
 
-
+    //Give users in the programmer detail activity a way to navigate back to the list
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
