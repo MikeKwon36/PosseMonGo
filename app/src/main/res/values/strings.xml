@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PosseMonGo</string>
+    <string name="title_programmer_detail">Programmer Detail</string>
+    <string name="roster_reset">Roster reset!</string>
+    <string name="roster_swipe_delete">removed from roster!</string>
+    <string name="launch_instructions">Click to Select\nHold to Move\nSwipe to Remove</string>
+
+    <string name="ios">iOS</string>
+    <string name="android">Android</string>
+    <string name="ruby">Ruby</string>
+
+    <string name="posse_name">Name:</string>
+    <string name="posse_artist">Artist:</string>
+    <string name="posse_platform">Platform:</string>
+    <string name="posse_favorite_color">Favorite Color:</string>
+    <string name="posse_age">Age:</string>
+    <string name="posse_weight">Weight:</string>
+    <string name="posse_phone">Phone Number:</string>
+    <string name="posse_locality">Locality:</string>
+    <string name="posse_region">Region:</string>
+    <string name="posse_postalcode">Postal Code:</string>
+    <string name="posse_country">Country:</string>
+</resources>
