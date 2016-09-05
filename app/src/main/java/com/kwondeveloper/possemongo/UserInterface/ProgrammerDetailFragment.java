@@ -26,7 +26,6 @@ import com.squareup.picasso.Picasso;
 public class ProgrammerDetailFragment extends Fragment {
 
     public static final String POSSE_IDENTIFIER = "index";
-    private CollapsingToolbarLayout mAppBarLayout;
     private Posse mProgrammer;
     private View mRootView;
 
@@ -40,9 +39,9 @@ public class ProgrammerDetailFragment extends Fragment {
         if (getArguments().containsKey(POSSE_IDENTIFIER)) {
             mProgrammer = PosseSingleton.getProgrammer(getArguments().getInt(POSSE_IDENTIFIER));
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout mAppBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-            if (mAppBarLayout != null) {
-                mAppBarLayout.setTitle(mProgrammer.getName());
+            CollapsingToolbarLayout appBar = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+            if (appBar != null) {
+                appBar.setTitle(mProgrammer.getName());
             }
         }
     }
