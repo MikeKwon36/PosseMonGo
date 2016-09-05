@@ -25,21 +25,23 @@ import java.util.List;
  */
 public class PosseSingleton {
 
+    public static final String POSSE_JSON_FILE = "android_model_challenge.json";
+
     //Made sense to leave this global variable here since the Singleton instance persists across
     // state changes and activity/fragment life cycles
     public static boolean mTwoPane;
 
-    private static final String POSSE_JSON_FILE = "android_model_challenge.json";
     private static PosseSingleton mInstance;
     private static ArrayList<Posse> mArray;
     private static Context mContext;
 
-    //Singleton ArrayList private constructor
+    //Singleton ArrayList constructor is private to ensure only a single instance is created
     private PosseSingleton(){
         mArray = new ArrayList<Posse>();
     }
 
-    //getInstance() method call instantiates and returns an instance of the PosseSingleton class
+    //getInstance() method call instantiates and/or returns an instance of the PosseSingleton class
+    //Context is passed in getInstance() to enable access to assets resource folder
     public static PosseSingleton getInstance(Context context){
         Log.d("***PosseSingleton", "Singleton getInstance method called");
         if(mInstance==null){
@@ -54,25 +56,22 @@ public class PosseSingleton {
     public static void addProgrammer(Posse programmer){
         mArray.add(programmer);
     }
+    public static Posse removeProgrammer(int index){
+        return mArray.remove(index);
+    }
+    public static Posse getProgrammer(int index){
+        return mArray.get(index);
+    }
+    public static ArrayList<Posse> getRoster(){
+            return mArray;
+    }
 
     //This version of addProgrammer() is needed when dragging & dropping list items in specific positions
     public static void addProgrammer(Posse programmer, int position){
         mArray.add(position,programmer);
     }
 
-    public static Posse removeProgrammer(int index){
-        return mArray.remove(index);
-    }
-
-    public static Posse getProgrammer(int index){
-        return mArray.get(index);
-    }
-
-    public static ArrayList<Posse> getRoster(){
-            return mArray;
-    }
-
-    //populate the roster on app launch, and reset the roster if floating action button is clicked
+    //Populates the roster during launch, and resets the roster if floating action button is clicked
     public static void resetRoster(){
         Log.d("***PosseSingleton", "resetRoster() called");
         String json;
@@ -81,13 +80,13 @@ public class PosseSingleton {
         loadProgrammers(json);
     }
 
-    //method to make the phone number look a little nicer
+    //Method to make the phone number appear a little nicer
     public static String formatPhoneNumber (String s) {
         return String.format("(%s) %s-%s",s.substring(0, 3),s.substring(3, 6),s.substring(6, 10));
     }
 
     //JSON document stored in App's assets folder for access (normally this process would be
-    // preceded by an HTTP API call to pull the JSON object
+    // preceded/replaced by an HTTP API call to build a JSON object from the web
     @Nullable
     public static String loadJSONFromAsset(String fileName) {
         String json = null;
@@ -106,7 +105,7 @@ public class PosseSingleton {
         return json;
     }
 
-    //Leverage GSON object to build Programmer objects for storage in Singleton for reference later
+    //Leverage GSON to build 'Posse' objects to store programmer information in a Singleton reference
     public static void loadProgrammers(String json) {
         Log.d("***PosseSingleton", "loadProgrammers method called");
         Gson gson = new Gson();

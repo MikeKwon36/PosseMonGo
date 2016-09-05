@@ -12,14 +12,18 @@
     <string name="ruby">Ruby</string>
 
     <string name="posse_name">Name:</string>
-    <string name="posse_artist">Artist:</string>
+    <string name="posse_artist">Artistic?:</string>
     <string name="posse_platform">Platform:</string>
     <string name="posse_favorite_color">Favorite Color:</string>
     <string name="posse_age">Age:</string>
-    <string name="posse_weight">Weight:</string>
+    <string name="posse_weight">Weight (lbs):</string>
     <string name="posse_phone">Phone Number:</string>
-    <string name="posse_locality">Locality:</string>
-    <string name="posse_region">Region:</string>
-    <string name="posse_postalcode">Postal Code:</string>
+    <string name="posse_locality">City:</string>
+    <string name="posse_region">State:</string>
+    <string name="posse_postalcode">ZIP:</string>
     <string name="posse_country">Country:</string>
+
+    <string name="is_an_artist">Yes! Some would say, almost too much...</string>
+    <string name="is_not_an_artist">Nope! Only stick figures here.</string>
+
 </resources>
