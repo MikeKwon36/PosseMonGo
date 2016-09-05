@@ -24,12 +24,15 @@ import java.util.List;
  * Created by Mike on 9/3/2016.
  */
 public class PosseSingleton {
+
+    //Made sense to leave this global variable here since the Singleton instance persists across
+    // state changes and activity/fragment life cycles
     public static boolean mTwoPane;
+
     private static final String POSSE_JSON_FILE = "android_model_challenge.json";
     private static PosseSingleton mInstance;
     private static ArrayList<Posse> mArray;
     private static Context mContext;
-    private static Handler mHandler;
 
     //Singleton ArrayList private constructor
     private PosseSingleton(){
@@ -52,6 +55,7 @@ public class PosseSingleton {
         mArray.add(programmer);
     }
 
+    //This version of addProgrammer() is needed when dragging & dropping list items in specific positions
     public static void addProgrammer(Posse programmer, int position){
         mArray.add(position,programmer);
     }
@@ -68,7 +72,7 @@ public class PosseSingleton {
             return mArray;
     }
 
-    //populate the roster
+    //populate the roster on app launch, and reset the roster if floating action button is clicked
     public static void resetRoster(){
         Log.d("***PosseSingleton", "resetRoster() called");
         String json;
@@ -77,12 +81,13 @@ public class PosseSingleton {
         loadProgrammers(json);
     }
 
-    public static String formatPhoneNumber (String phoneNumber) {
-        String formattedNumber = String.format("(%s) %s-%s",phoneNumber.substring(0, 3),phoneNumber.substring(3, 6),phoneNumber.substring(6, 10));
-        return formattedNumber;
+    //method to make the phone number look a little nicer
+    public static String formatPhoneNumber (String s) {
+        return String.format("(%s) %s-%s",s.substring(0, 3),s.substring(3, 6),s.substring(6, 10));
     }
 
-
+    //JSON document stored in App's assets folder for access (normally this process would be
+    // preceded by an HTTP API call to pull the JSON object
     @Nullable
     public static String loadJSONFromAsset(String fileName) {
         String json = null;
@@ -101,6 +106,7 @@ public class PosseSingleton {
         return json;
     }
 
+    //Leverage GSON object to build Programmer objects for storage in Singleton for reference later
     public static void loadProgrammers(String json) {
         Log.d("***PosseSingleton", "loadProgrammers method called");
         Gson gson = new Gson();

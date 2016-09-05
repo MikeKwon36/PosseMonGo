@@ -18,20 +18,6 @@ public class Posse {
 
     public Posse() {}
 
-    public Posse(Posse template) {
-        if(template.name != null) this.name = template.name;
-        if(template.favoriteColor != null) this.favoriteColor = template.favoriteColor;
-        if(template.age != null) this.age = template.age;
-        if(template.weight != null) this.weight = template.weight;
-        if(template.phone != null) this.phone = template.phone;
-        if(template.isArtist != null) this.isArtist = template.isArtist;
-        if(template.locality != null) this.locality = template.locality;
-        if(template.region != null) this.region = template.region;
-        if(template.postalCode != null) this.postalCode = template.postalCode;
-        if(template.country != null) this.country = template.country;
-        if(template.platform != null) this.platform = template.platform;
-    }
-
     public String getName() {
         return name;
     }
