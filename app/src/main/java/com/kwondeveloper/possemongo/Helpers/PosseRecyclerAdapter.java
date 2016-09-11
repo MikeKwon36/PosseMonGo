@@ -85,6 +85,7 @@ public class PosseRecyclerAdapter extends RecyclerView.Adapter<PosseRecyclerAdap
         Posse prev = PosseSingleton.removeProgrammer(fromPosition);
         PosseSingleton.addProgrammer(prev, toPosition);
         notifyItemMoved(fromPosition, toPosition);
+        Log.d("***PosseAdapter", "List item moved from " + fromPosition + " to " + toPosition);
     }
 
     //Custom ViewHolder inner class for recyclerview
@@ -118,6 +119,7 @@ public class PosseRecyclerAdapter extends RecyclerView.Adapter<PosseRecyclerAdap
                 intent.putExtra(ProgrammerDetailFragment.POSSE_IDENTIFIER, getAdapterPosition());
                 context.startActivity(intent);
             }
+            Log.d("***PosseAdapter", "List item clicked: " + getAdapterPosition());
             Toast.makeText(mContext,
                     PosseSingleton.getProgrammer(getAdapterPosition()).getName() + mContext.getString(R.string.selection),
                     Toast.LENGTH_SHORT).show();
@@ -128,6 +130,7 @@ public class PosseRecyclerAdapter extends RecyclerView.Adapter<PosseRecyclerAdap
         public void onItemSelected() {
             itemView.setScaleX(.98f);
             itemView.setScaleY(.98f);
+            Log.d("***PosseAdapter", "List item selected for movement");
         }
 
         //Restore list item size when released

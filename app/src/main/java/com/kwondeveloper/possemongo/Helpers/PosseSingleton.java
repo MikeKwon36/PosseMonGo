@@ -89,7 +89,7 @@ public class PosseSingleton {
     // preceded/replaced by an HTTP API call to build a JSON object from the web
     @Nullable
     public static String loadJSONFromAsset(String fileName) {
-        String json = null;
+        String json;
         try {
             InputStream is = mContext.getAssets().open(fileName);
             int size = is.available();

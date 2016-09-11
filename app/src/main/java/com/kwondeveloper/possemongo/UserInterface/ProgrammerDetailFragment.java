@@ -38,6 +38,7 @@ public class ProgrammerDetailFragment extends Fragment {
         //pull programmer details from the Singleton Arraylist containing all Programmer objects
         if (getArguments().containsKey(POSSE_IDENTIFIER)) {
             mProgrammer = PosseSingleton.getProgrammer(getArguments().getInt(POSSE_IDENTIFIER));
+            Log.d("***DetailFragment", "mProgrammer object instantiated based on list item: " + getArguments().getInt(POSSE_IDENTIFIER));
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBar = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBar != null) {
@@ -64,6 +65,7 @@ public class ProgrammerDetailFragment extends Fragment {
             ((TextView) mRootView.findViewById(R.id.tvRegion)).setText(mProgrammer.getRegion());
             ((TextView) mRootView.findViewById(R.id.tvPostalCode)).setText(mProgrammer.getPostalCode());
             ((TextView) mRootView.findViewById(R.id.tvCountry)).setText(mProgrammer.getCountry());
+            Log.d("***DetailFragment", "Programmer details pulled from mProgrammer object into UI views");
         }
 
         return mRootView;
