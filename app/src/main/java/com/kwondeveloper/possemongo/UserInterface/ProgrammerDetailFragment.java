@@ -57,7 +57,7 @@ public class ProgrammerDetailFragment extends Fragment {
             ((TextView) mRootView.findViewById(R.id.tvPlatform)).setText(mProgrammer.getPlatform());
             ((TextView) mRootView.findViewById(R.id.tvArtist)).setText(artist);
             ((TextView) mRootView.findViewById(R.id.tvColor)).setText(mProgrammer.getFavoriteColor());
-            ((TextView) mRootView.findViewById(R.id.tvAge)).setText(String.valueOf(mProgrammer.getAge()));
+            ((TextView) mRootView.findViewById(R.id.tvAge)).setText(mProgrammer.getAge());
             ((TextView) mRootView.findViewById(R.id.tvWeight)).setText(String.valueOf(mProgrammer.getWeight()));
             ((TextView) mRootView.findViewById(R.id.tvPhone)).setText(mProgrammer.getPhone());
             ((TextView) mRootView.findViewById(R.id.tvLocality)).setText(mProgrammer.getLocality());
